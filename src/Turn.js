@@ -12,6 +12,14 @@ class Turn {
     return this.card;
   }
 
+  evaluateGuess() {
+    return this.guess === this.card.correctAnswer;
+  }
+
+  giveFeedback() {
+    return this.guess === this.card.correctAnswer ? 'Correct!' : 'Incorrect!';
+  }
+
 }
 
 module.exports = Turn;
