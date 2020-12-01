@@ -29,7 +29,8 @@ class Round {
   }
 
   calculatePercentCorrect() {
-    return (this.incorrectGuesses.length / this.deck.length) * 100;
+    const percentMissed = (this.incorrectGuesses.length / this.deck.length) * 100;
+    return Math.floor(100 - percentMissed);
   }
 
   endRound() {
