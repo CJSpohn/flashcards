@@ -27,7 +27,6 @@ class Round {
       this.incorrectGuesses.push(card.id);
     }
 
-    this.endRound();
     return turn.giveFeedback();
   }
 
