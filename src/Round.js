@@ -25,6 +25,7 @@ class Round {
       this.incorrectGuesses.push(card.id);
     }
 
+    this.endRound();
     return turn.giveFeedback();
   }
 
@@ -34,7 +35,9 @@ class Round {
   }
 
   endRound() {
-    console.log(`** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`);
+    if (this.turns === this.deck.length) {
+      return console.log(`** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`);
+    }
   }
 
 }

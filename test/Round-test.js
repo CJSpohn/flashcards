@@ -24,7 +24,7 @@ describe('Round', function() {
   it('should return the current card being played', function() {
     const currentCard = round.returnCurrentCard();
 
-    expect(currentCard).to.equal(card1)
+    expect(currentCard).to.equal(card1);
   });
 
   it('should update turns count every guess', function() {
@@ -59,15 +59,9 @@ describe('Round', function() {
     round.takeTurn('California');
     round.takeTurn('Potato');
     round.takeTurn('Baking');
-
     const score = round.calculatePercentCorrect();
 
     expect(score).to.equal(66)
   });
-
-  it('should end the round', function () {
-
-  });
-
 
 });
