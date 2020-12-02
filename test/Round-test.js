@@ -13,7 +13,8 @@ describe('Round', function() {
     card1 = new Card(2, 'Where was Chris born?', ['California', 'Colorado', 'New Mexico'], 'California');
     card2 = new Card(16, 'What is Chris\'s favorite soup?', ['Chowder', 'Tomato', 'Potato'], 'Potato');
     card3 = new Card(7, 'What activity does Chris like doing the most?', ['Bowling', 'Baking', 'Eating'], 'Eating');
-    deck = [card1, card2, card3];
+    deck = new Deck([card1, card2, card3]);
+
     return round = new Round(deck);
   })
 
