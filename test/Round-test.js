@@ -62,7 +62,7 @@ describe('Round', function() {
     round.takeTurn('Baking');
     const score = round.calculatePercentCorrect();
 
-    expect(score).to.equal(66)
+    expect(score).to.equal(66);
   });
 
 });
