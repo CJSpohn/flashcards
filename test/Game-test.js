@@ -9,10 +9,10 @@ const Game = require('../src/Game');
 const data = require('../src/data');
 const questions = data.prototypeData;
 
-describe('Game', function() {
+describe('Game', () => {
   let deck, turn, round;
 
-  beforeEach(function() {
+  beforeEach(() => {
     let card1 = new Card(1, 'What is the air speed velocity of an unlaiden swallow?', ['Umm, I don\'t know', '42 mph', 'fast'], 'Umm, I don\'t know');
     let card2 = new Card(2, 'What is Chris\'s favorite movie?', ['Cool Runnings', 'Tropic Thunder', 'The Way, Way Back'], 'The Way, Way Back');
     let card3 = new Card(3, 'What card is this?', ['1', '2', '3'], '3');
@@ -21,15 +21,15 @@ describe('Game', function() {
     game = new Game();
   });
 
-  it('be a function', function() {
+  it('be a function', () => {
     expect(Game).to.be.a('function');
   });
 
-  it('should be an instance of Game', function() {
+  it('should be an instance of Game', () => {
     expect(game).to.be.an.instanceof(Game);
   });
 
-  it('should be able to start the game', function() {
+  it('should be able to start the game', () => {
     expect(game).to.respondTo('gameStart');
   });
 
@@ -37,7 +37,7 @@ describe('Game', function() {
     expect(game.currentRound).to.equal(undefined);
   });
 
-  it('should create a new round after being set up', function() {
+  it('should create a new round after being set up', () => {
     game.setUpGame();
     expect(game.currentRound).to.be.an.instanceof(Round);
   });
