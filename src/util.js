@@ -44,7 +44,7 @@ async function main(round, start) {
     if(!round.returnCurrentCard()) {
       console.log(round.endRound());
       console.log(calculateTime());
-      if (game.currentRound.calculatePercentCorrect() > 75) {
+      if (game.currentRound.calculatePercentCorrect() > 90) {
         console.log(`You really grasp this material, CONGRATS!`)
       } else {
         console.log(`You need a 75% or better to move on from this data set. Try again!`)
