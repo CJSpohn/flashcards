@@ -29,18 +29,27 @@ const confirmUpdate = (id, round) => {
   }
 }
 
-async function main(round) {
+async function main(round, start) {
 
   const currentRound = await getRound(round);
   const getAnswer = await inquirer.prompt(genList(currentRound));
   const getConfirm = await inquirer.prompt(confirmUpdate(getAnswer.answers, round));
 
+  const calculateTime = () => {
+    let finishTime = Date.now();
+    let totalTime = (finishTime - start)/1000.
+    return `You finished in ${totalTime.toFixed(1)} seconds!\n`;
+  }
+  
     if(!round.returnCurrentCard()) {
       console.log(round.endRound());
+      console.log(calculateTime());
       game.gameStart();
     } else {
-      main(round);
+      main(round, start);
     }
+
+
 }
 
 module.exports.main = main;
