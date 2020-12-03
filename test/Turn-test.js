@@ -9,11 +9,11 @@ describe('Turn', () => {
   let card;
 
   beforeEach(() => {
-    card = new Card(2, 'What is Chris\'s favorite color?', ['Green', 'Blue', 'Orange'], 'Orange');
+    card = new Card(2, 'What is Chris\'s favorite color?',
+      ['Green', 'Blue', 'Orange'], 'Orange');
   });
 
   it('should be a function', () => {
-    const turn = new Turn();
     expect(Turn).to.be.a('function');
   });
 
@@ -26,7 +26,8 @@ describe('Turn', () => {
     const guess = 'Blue';
     const turn = new Turn(guess, card);
     expect(turn.guess).to.equal('Blue');
-    expect(turn.card.question).to.equal('What is Chris\'s favorite color?', ['Green', 'Blue', 'Orange'], 'Orange');
+    expect(turn.card.question).to.equal('What is Chris\'s favorite color?',
+      ['Green', 'Blue', 'Orange'], 'Orange');
   });
 
   it('should be able to return the guess', () => {
