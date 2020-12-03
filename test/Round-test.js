@@ -25,7 +25,7 @@ describe('Round', function() {
   it('should return the current card being played', function() {
     const currentCard = round.returnCurrentCard();
 
-    expect(currentCard).to.equal(card1);
+    expect(currentCard).to.eql(card1);
   });
 
   it('should update turns count every guess', function() {
@@ -43,6 +43,13 @@ describe('Round', function() {
     expect(round.incorrectGuesses[0]).to.equal(2);
   });
 
+  it('should not store the id of correct guesses', function() {
+    round.takeTurn('California');
+    round.takeTurn('Potato');
+
+    expect(round.incorrectGuesses).to.eql([]);
+  })
+
   it('should go to the next card in the deck after a guess', function() {
     round.takeTurn('California');
     const currentCard = round.returnCurrentCard();
@@ -50,19 +57,33 @@ describe('Round', function() {
     expect(currentCard).to.equal(card2);
   });
 
-  it('should return feedback after a guess', function() {
+  it('should return Correct! after a correct guess', function() {
+    const feedback = round.takeTurn('California');
+
+    expect(feedback).to.equal('Correct!')
+  });
+
+  it('should return Incorrect! after an incorrect guess', function() {
     const feedback = round.takeTurn('Colorado');
 
     expect(feedback).to.equal('Incorrect!')
   });
 
-  it('should return the percentage of correct answers', function() {
+  it('should return the percentage of correct answers as an integer', function() {
     round.takeTurn('California');
     round.takeTurn('Potato');
     round.takeTurn('Baking');
     const score = round.calculatePercentCorrect();
 
     expect(score).to.equal(66);
+  });
+
+  it('should end the round once all the cards have been played', function() {
+    round.takeTurn('Colorado');
+    round.takeTurn('Potato');
+    expect(round.endRound()).to.be.undefined;
+    round.takeTurn('Eating');
+    expect(round.endRound()).to.equal(`** Round over! ** You answered 66% of the questions correctly!`);
   });
 
 });
