@@ -5,13 +5,13 @@ class Round {
   constructor(deck) {
     this.deck = deck,
     this.turns = 0,
-    this.incorrectGuesses = []
+    this.incorrectGuesses = [],
     this.length = deck.cards.length;
   }
 
   returnCurrentCard() {
-    const currentCard = this.deck.cards[0];
-    return currentCard;
+    this.deck.cards[0];
+    return this.deck.cards[0];
   }
 
   takeTurn(guess) {

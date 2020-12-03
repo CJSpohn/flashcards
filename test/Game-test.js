@@ -21,22 +21,25 @@ describe('Game', function() {
     game = new Game();
   });
 
-  it('should keep track of the current round', function() {
-    expect(game.round).to.equal(0);
-
-    // game.gameStart();
-    //
-    // expect(game.round).to.equal(1);
+  it('be a function', function() {
+    expect(Game).to.be.a('function');
   });
 
-
-
-  it('should be able to put cards in a deck', function() {
-
+  it('should be an instance of Game', function() {
+    expect(game).to.be.an.instanceof(Game);
   });
 
-  it('should create a new round using the deck', function() {
+  it('should be able to start the game', function() {
+    expect(game).to.respondTo('gameStart');
+  });
 
+  it('should start with no currentRound', function () {
+    expect(game.currentRound).to.equal(undefined);
+  });
+
+  it('should create a new round after being set up', function() {
+    game.setUpGame();
+    expect(game.currentRound).to.be.an.instanceof(Round);
   });
 
 });

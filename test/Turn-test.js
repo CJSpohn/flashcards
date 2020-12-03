@@ -43,16 +43,19 @@ describe('Turn', function() {
     expect(returnedCard).to.deep.equal(card);
   });
 
-  it('should be able to evaluate the guess', function() {
+  it('should be able to evaluate the guess as false if false', function() {
     const guess = 'Blue';
     const turn = new Turn(guess, card);
     const result = turn.evaluateGuess();
     expect(result).to.deep.equal(false);
 
-    const secondGuess = 'Orange';
-    const secondTurn = new Turn(secondGuess, card);
-    const secondResult = secondTurn.evaluateGuess();
-    expect(secondResult).to.deep.equal(true);
+  });
+
+  it('should be able to evaluate the guess as true if true', function () {
+    const guess = 'Orange';
+    const turn = new Turn(guess, card);
+    const result = turn.evaluateGuess();
+    expect(result).to.deep.equal(true);
   });
 
   it('should provide feedback based on whether the answer was correct or not', function() {
