@@ -40,11 +40,16 @@ async function main(round, start) {
     let totalTime = (finishTime - start)/1000.
     return `You finished in ${totalTime.toFixed(1)} seconds!\n`;
   }
-  
+
     if(!round.returnCurrentCard()) {
       console.log(round.endRound());
       console.log(calculateTime());
-      game.gameStart();
+      if (game.currentRound.calculatePercentCorrect() > 75) {
+        console.log(`You really grasp this material, CONGRATS!`)
+      } else {
+        console.log(`You need a 75% or better to move on from this data set. Try again!`)
+        setTimeout( () => { game.gameStart() }, 2000);
+      }
     } else {
       main(round, start);
     }
