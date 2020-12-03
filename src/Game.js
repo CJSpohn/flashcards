@@ -17,7 +17,8 @@ class Game {
   }
 
   printQuestion(round) {
-    util.main(round);
+    let start = Date.now();
+    util.main(round, start);
   }
 
   gameStart() {

@@ -29,18 +29,32 @@ const confirmUpdate = (id, round) => {
   }
 }
 
-async function main(round) {
+async function main(round, start) {
 
   const currentRound = await getRound(round);
   const getAnswer = await inquirer.prompt(genList(currentRound));
   const getConfirm = await inquirer.prompt(confirmUpdate(getAnswer.answers, round));
 
+  const calculateTime = () => {
+    let finishTime = Date.now();
+    let totalTime = (finishTime - start)/1000.
+    return `You finished in ${totalTime.toFixed(1)} seconds!\n`;
+  }
+
     if(!round.returnCurrentCard()) {
       console.log(round.endRound());
-      game.gameStart();
+      console.log(calculateTime());
+      if (game.currentRound.calculatePercentCorrect() > 90) {
+        console.log(`You really grasp this material, CONGRATS!`)
+      } else {
+        console.log(`You need a 75% or better to move on from this data set. Try again!`)
+        setTimeout( () => { game.gameStart() }, 2000);
+      }
     } else {
-      main(round);
+      main(round, start);
     }
+
+
 }
 
 module.exports.main = main;
