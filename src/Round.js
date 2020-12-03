@@ -21,12 +21,10 @@ class Round {
     let turn = new Turn(guess, card);
 
     this.deck.cards.shift();
-    // this.deck.cards.push(card);
 
     if (!turn.evaluateGuess()) {
       this.incorrectGuesses.push(card.id);
     }
-
     return turn.giveFeedback();
   }
 
